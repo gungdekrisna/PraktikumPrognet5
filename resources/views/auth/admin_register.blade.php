@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register Admin') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ url("register/admin") }}">
+                    <form method="POST" action="{{ url("register/admin") }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
@@ -43,7 +43,7 @@
                             <label for="profile_image" class="col-md-4 col-form-label text-md-right">{{ __('Profile Image') }}</label>
 
                             <div class="col-md-6">
-                                <input id="profile_image" type="text" class="form-control @error('profile_image') is-invalid @enderror" name="profile_image" value="{{ old('profile_image') }}" required autocomplete="profile_image" placeholder="Insert link">
+                                <input id="profile_image" type="file" class="form-control @error('profile_image') is-invalid @enderror" name="profile_image" required autocomplete="profile_image">
 
                                 @error('profile_image')
                                     <span class="invalid-feedback" role="alert">

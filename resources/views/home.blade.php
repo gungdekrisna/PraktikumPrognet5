@@ -15,6 +15,7 @@
                     @endif
 
                     You are logged in as regular User (Pembeli)!
+                    <br><img src="{{ URL::to('/') }}/images/{{ Auth::user()->profile_image }}" width="120" height="auto">
                 </div>
             </div>
         </div>

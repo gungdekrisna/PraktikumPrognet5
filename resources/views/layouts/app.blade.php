@@ -50,9 +50,6 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ url("register/admin") }}">{{ __('Register as Admin') }}</a>
-                                </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">

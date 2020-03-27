@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
-class RegisterController extends Controller
+class AdminRegisterController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -24,7 +24,7 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+   /* use RegistersUsers;*/
 
     /**
      * Where to redirect users after registration.
@@ -40,8 +40,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
-        $this->middleware('guest:admin');
+        $this->middleware('auth:admin');
     }
 
     /**
@@ -54,7 +53,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'profile_image' => ['required', 'file'],
             'status' => ['required', 'string', 'max:255'],
@@ -67,38 +66,38 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function createUser(Request $data)
+    /*protected function create(array $data)
     {
-        $resorce = $data->file('profile_image');
-        $name   = $resorce->getClientOriginalName();
-        $resorce->move(\base_path() ."/public/images", $name);
-
-        User::create([
+        return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'profile_image' => $name,
+            'profile_image' => $data['profile_image'],
             'status' => $data['status']
         ]);
+    }*/
 
-        return redirect()->intended('home');
-    }
-
-   /* public function adminRegisterForm()
+    public function adminRegisterForm()
     {
+        $this->middleware('guest:admin');
+        
         return view('auth.admin_register');
     }
 
     protected function createAdmin(Request $request)
     {
+        $resorce = $request->file('profile_image');
+        $name   = $resorce->getClientOriginalName();
+        $resorce->move(\base_path() ."/public/images", $name);
+
         Admin::create([
             'name' => $request['name'],
             'username' => $request['username'],
             'password' => Hash::make($request['password']),
-            'profile_image' => $request['profile_image'],
+            'profile_image' => $name,
             'phone' => $request['phone']
         ]);
 
-        return redirect()->intended('login/admin');
-    }*/
+        return redirect()->intended('admin');
+    }
 }

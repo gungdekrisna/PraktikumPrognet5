@@ -25,11 +25,12 @@ Route::get('/admin', 'AdminController@index')->name('homeAdmin');
 /* User Login */
 /*Route::get('/login', 'Auth\LoginController@userLoginForm')->name('userLoginForm');
 Route::post('/login', 'Auth\LoginController@userLogin')->name('userLogin');*/
+Route::post('/register/user', 'Auth\RegisterController@createUser')->name('createUser');
 
 /*Admin Login*/
 Route::get('/login/admin', 'Auth\LoginController@adminLoginForm')->name('adminLoginForm');
 Route::post('/login/admin', 'Auth\LoginController@adminLogin')->name('adminLogin');
 
 /*Admin Register*/
-Route::get('/register/admin', 'Auth\RegisterController@adminRegisterForm')->name('adminRegisterForm');
-Route::post('/register/admin', 'Auth\RegisterController@createAdmin')->name('createAdmin');
+Route::get('/register/admin', 'Auth\AdminRegisterController@adminRegisterForm')->name('adminRegisterForm');
+Route::post('/register/admin', 'Auth\AdminRegisterController@createAdmin')->name('createAdmin');

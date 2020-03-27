@@ -15,6 +15,10 @@
                     @endif
 
                     You are logged in as Admin!
+                    <br><img src="{{ URL::to('/') }}/images/{{ Auth::user()->profile_image }}" width="120" height="auto">
+                </div>
+                <div class="card-body">
+                    <a href="{{ url("register/admin") }}" class="btn btn-success">Create Admin</a>
                 </div>
             </div>
         </div>
