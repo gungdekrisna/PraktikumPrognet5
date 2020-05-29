@@ -11,4 +11,9 @@ class Product_image extends Model
     protected $fillable = [
     	'product_id', 'image_name',
     ];
+
+    public function product()
+    {
+    	return $this->belongsTo('App\Product', 'product_id');
+    }
 }

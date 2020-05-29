@@ -19,7 +19,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'AdminController@index')->name('homeAdmin');
 
 /* User Login */
@@ -64,3 +63,13 @@ Route::get('/categories/restore/{id}', 'CategoryController@restore');
 Route::get('/categories-restore-all', 'CategoryController@restore_all');
 Route::get('/categories/destroy/{id}', 'CategoryController@delete');
 Route::get('/categories-delete-all', 'CategoryController@delete_all');
+
+// User's page or Landing Page
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/product/{id}', 'HomeController@product_detail');
+Route::get('/product/payment/{id}/{qty}', 'HomeController@product_payment');
+Route::post('/product/buy', 'HomeController@product_buy');
+Route::get('/product/payment/courier-service/{destination}/{courier}/{product}/{product_qty}', 'HomeController@getShippingCost');
+Route::post('/product/transaction/store', 'HomeController@TransactionStore');
+Route::get('product/payment-confirmation/{id}', 'HomeController@PaymentConfirmation');
+Route::get('product/proof-of-payment/{id}', 'HomeController@PaymentConfirmation');

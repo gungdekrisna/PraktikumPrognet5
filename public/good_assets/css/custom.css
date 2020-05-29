@@ -1,0 +1,12 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.price{
+	float: right;
+	font-size: 20px;
+}
+
+.parallax-window{
+	background-size: cover;
+	background-repeat: no-repeat;
+}

@@ -17,4 +17,14 @@ class Product extends Model
     ];
 
     protected $dates = ['deleted_at'];
+
+    public function product_image()
+    {
+        return $this->hasMany('App\Product_image');
+    }
+
+    public function transaction_detail()
+    {
+        return $this->hasMany('App\Transaction_detail');
+    }
 }
