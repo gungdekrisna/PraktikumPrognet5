@@ -64,12 +64,38 @@ Route::get('/categories-restore-all', 'CategoryController@restore_all');
 Route::get('/categories/destroy/{id}', 'CategoryController@delete');
 Route::get('/categories-delete-all', 'CategoryController@delete_all');
 
+//Transactions
+Route::resource('transactions', 'TransactionController')->middleware('auth:admin');
+Route::get('/transactions-show/{id}', 'TransactionController@show')->name('transaction.show');
+Route::post('/change-status', 'TransactionController@changeStatus');
+
+//Response
+Route::resource('response', 'ResponseController')->middleware('auth:admin');
+Route::get('/response-show/{id}', 'ResponseController@show')->name('response.show');
+Route::post('/give-response', 'ResponseController@giveResponse');
+
 // User's page or Landing Page
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/product/{id}', 'HomeController@product_detail');
+
+// Payment
 Route::get('/product/payment/{id}/{qty}', 'HomeController@product_payment');
 Route::post('/product/buy', 'HomeController@product_buy');
 Route::get('/product/payment/courier-service/{destination}/{courier}/{product}/{product_qty}', 'HomeController@getShippingCost');
 Route::post('/product/transaction/store', 'HomeController@TransactionStore');
 Route::get('product/payment-confirmation/{id}', 'HomeController@PaymentConfirmation');
-Route::get('product/proof-of-payment/{id}', 'HomeController@PaymentConfirmation');
+Route::post('/product/proof-of-payment', 'HomeController@ProofOfPayment');
+Route::get('myorder/{user_id}', 'HomeController@myOrder');
+Route::get('/product/payment-confirmation/cancel/{id}', 'HomeController@cancelOrder');
+
+// Cart
+Route::get('/cart/{id}/{qty}/{user_id}', 'HomeController@insertCart');
+Route::get('/myCart/{user_id}', 'HomeController@myCart');
+Route::get('/cancel-cart/{id}', 'HomeController@cancelCart');
+Route::get('/cart-checkout/{user_id}', 'HomeController@cartCheckOut');
+Route::post('/cart/buy', 'HomeController@cart_buy');
+Route::get('/cart/payment/courier-service/{destination}/{courier}/{user_id}', 'HomeController@getShippingCostCart');
+Route::post('/cart/transaction/store', 'HomeController@CartTransactionStore');
+
+// Review
+Route::post('/review-insert', 'HomeController@insertReview');

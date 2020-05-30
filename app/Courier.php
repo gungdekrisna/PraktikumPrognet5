@@ -16,4 +16,9 @@ class Courier extends Model
     ];
 
     protected $dates = ['deleted_at'];
+
+    public function transaction()
+    {
+        return $this->hasMany('App\Transaction');
+    }
 }

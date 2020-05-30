@@ -27,4 +27,9 @@ class Product extends Model
     {
         return $this->hasMany('App\Transaction_detail');
     }
+
+    public function cart()
+    {
+        return $this->hasMany('App\Cart');
+    }
 }

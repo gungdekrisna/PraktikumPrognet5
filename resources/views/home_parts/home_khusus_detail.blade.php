@@ -208,6 +208,47 @@
     </div>
     <!-- /Sign In Popup -->
 
+    <!-- Modal Review -->
+    <div class="modal fade" id="myReview" tabindex="-1" role="dialog" aria-labelledby="myReviewLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myReviewLabel">Write your review</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div id="message-review">
+                    </div>
+                    <form method="post" action="/review-insert">
+                    {{ csrf_field() }}
+                        <input name="product_id" type="hidden" value="@foreach($products as $product) {{ $product->id }} @endforeach">
+                        <input name="user_id" type="hidden" value="{{ Auth::user()->id }}">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Rating</label>
+                                    <select class="form-control" name="rate" id="quality_review">
+                                        <option value="1">Low (1)</option>
+                                        <option value="2">Sufficient (2)</option>
+                                        <option value="3">Good (3)</option>
+                                        <option value="4">Excellent (4)</option>
+                                        <option value="5">Super (5)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End row -->
+                        <div class="form-group">
+                            <textarea name="content" id="review_text" class="form-control" style="height:100px" placeholder="Write your review"></textarea>
+                        </div>
+                        <input type="submit" value="Submit" class="btn_1" id="submit-review">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End modal review -->
+
     <!-- Common scripts -->
     <script src="{{ asset('good_assets/js/jquery-2.2.4.min.js') }}"></script>
     <script src="{{ asset('good_assets/js/common_scripts_min.js') }}"></script>

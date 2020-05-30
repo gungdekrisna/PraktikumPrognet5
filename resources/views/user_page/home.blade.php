@@ -69,14 +69,34 @@
                             </div>
                         </div>
                         <!--End tools -->
-
+                        
                         <div class="row">
                             @foreach($products as $product)
+                            <?php 
+                                /*$servername = "localhost";
+                                $username = "username";
+                                $password = "password";
+                                $dbname = "myDB";*/
+
+                                // Create connection
+                                $conn = new mysqli("localhost", "root", "gungkrisna", "db_paktikum_prognet");
+                                // Check connection
+                                if ($conn->connect_error) {
+                                  die("Connection failed: " . $conn->connect_error);
+                                }
+
+                                $sql = "SELECT * FROM product_images WHERE product_id = ". $product->id ." LIMIT 1";
+                                $result = $conn->query($sql);
+
+                                while ($row = $result->fetch_assoc()) {
+                                    $product_image = $row["image_name"];
+                                }
+                            ?>
                             <div class="col-md-6 wow zoomIn" data-wow-delay="0.1s">
                                 <div class="hotel_container">
                                     <div class="img_container">
                                         <a href="single_hotel.html">
-                                            <img src="/image/product_image/{{$image->image_name}}" width="800" height="533" class="img-fluid" alt="Image">
+                                            <img src="/image/product_image/{{$product_image}}" width="800" height="533" class="img-fluid" alt="Image">
                                         </a>
                                     </div>
                                     <div class="hotel_title">
@@ -93,14 +113,14 @@
                                         </div>     
 
                                         <div class="row" style="margin-top: 15px;">
-                                            <div class="col-md-6">
+                                            <div class="col-md-12">
                                                 <a class="btn_full" href="product/{{ $product->id }}" style="color: #fff">DETAILS</a>
                                             </div>
-                                            <div class="col-md-6">
+                                            <!-- <div class="col-md-6">
                                                 <a class="btn_full_outline" style="color: #85c99d">
                                                     <i class=" icon-cart"></i> ADD TO CART
                                                 </a>
-                                            </div>
+                                            </div> -->
                                         </div>                                        
                                     </div>
                                 </div>

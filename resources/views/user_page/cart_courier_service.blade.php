@@ -2,8 +2,7 @@
 
 @section('content')
 
-	@foreach($products as $product)
-	<section id="hero_2" style="background: url('/image/product_image/{{$image->image_name}}');">
+	<section id="hero_2" style="background-color: #e04f67;">
 		<div class="intro_title">
 			<h1>Place your order</h1>
 			<div class="bs-wizard row">
@@ -21,7 +20,7 @@
 					<div class="progress">
 						<div class="progress-bar"></div>
 					</div>
-					<a href="/product/payment/{{$product->id}}/{{$product_qty}}" class="bs-wizard-dot"></a>
+					<a href="" class="bs-wizard-dot"></a>
 				</div>
 
 				<div class="col-3 bs-wizard-step active">
@@ -37,7 +36,7 @@
 					<div class="progress">
 						<div class="progress-bar"></div>
 					</div>
-					<a href="confirmation_hotel.html" class="bs-wizard-dot"></a>
+					<a href="" class="bs-wizard-dot"></a>
 				</div>
 
 			</div>
@@ -51,7 +50,7 @@
 		<div class="container margin_60">
 			<div class="row">
 				<div class="col-lg-8 add_bottom_15">
-					<form action="/product/transaction/store" method="POST">
+					<form action="/cart/transaction/store" method="POST">
 						{{ csrf_field() }}
 						<div class="form_title">
 							<h3><strong>2</strong>Choose @foreach($couriers as $courier_name) {{ $courier_name->courier }} @endforeach Courier Service</h3>
@@ -83,13 +82,16 @@
 								</div>
 							</div>
 						</div>
+						<?php $sub_total = 0; ?>
+						@foreach($carts as $cart)
+							<?php $total_per_product = $cart->product->price * $cart->qty; ?>
+							<?php $sub_total = $sub_total + $total_per_product; ?>
+						@endforeach
 
 						<?php 
 							foreach ($costs->cost as $cost) {
 								$shipping_cost = $cost->value;
-							}
-							$sub_total = $product->price * $product_qty;
-							$total = $sub_total + $shipping_cost;
+							}							
 							foreach ($couriers as $courier_name) {
 								$courier_id = $courier_name->id;
 							}
@@ -98,14 +100,9 @@
 						<input type="hidden" name="regency" value="{{ $regency }}">	
 						<input type="hidden" name="province" value="{{ $province }}">				
 						<input type="hidden" name="sub_total" value="{{ $sub_total }}">
-						<input type="hidden" name="total" value="{{ $total }}">
-						<input type="hidden" name="shipping_temporary" value="0">
 						<input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-						<input type="hidden" name="status" value="unverified">						
-						<input type="hidden" name="product_id" value="{{ $product->id }}">
-						<input type="hidden" name="product_qty" value="{{ $product_qty }}">
+						<input type="hidden" name="status" value="unverified">				
 						<input type="hidden" name="courier_id" value="{{ $courier_id }}">
-						<input type="hidden" name="selling_price" value="{{ $product->price }}">
 
 						<div id="policy">
 							<!-- <h4>Cancellation policy</h4>
@@ -123,14 +120,16 @@
 						<h3 class="inner">- Summary -</h3>
 						<table class="table table_summary">
 							<tbody>
-
-								@foreach($products as $product)
+								<?php $total_order = 0; ?>
+								@foreach($carts as $cart)
 								<tr>
 									<td>
-										{{ $product->product_name }}
+										{{ $cart->qty }} {{ $cart->product->product_name }}
 									</td>
 									<td class="text-right">
-										{{ $product_qty }}
+										<?php $total_price = $cart->product->price * $cart->qty ?>
+										Rp. {{ $total_price }}
+										<?php $total_order = $total_order + $total_price; ?>
 									</td>
 								</tr>
 								@endforeach
@@ -140,15 +139,12 @@
 										Sub Total
 									</td>
 									<td class="text-right">
-										<?php 
-											$total_price = $product->price * $product_qty;
-										 ?>
-										{{ $total_price }}
+										Rp. {{ $total_order }}
 									</td>
 								</tr>
 							</tbody>
 						</table>
-						<a class="btn_full_outline" href="product/{{ $product->id }}"><i class="icon-right"></i> Modify your search</a>
+						<a class="btn_full_outline" href="/myCart"><i class="icon-right"></i> Modify your search</a>
 					</div>
 				</aside>
 
@@ -158,12 +154,5 @@
 		<!--End container -->
 	</main>
 	<!-- End main -->
-	<script type="text/javascript">
-	    function makeLink(){
-	        var qtyValue = document.getElementById("quantity").value;
-	        window.location.href = "/product/payment/{{ $product->id }}/"+qtyValue;
-	    }
-	</script>
 
-	@endforeach
 @endsection

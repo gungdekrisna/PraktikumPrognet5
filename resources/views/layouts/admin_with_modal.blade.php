@@ -200,19 +200,6 @@
           <span class="menu-title">Ulasan Pembeli</span>
         </a>
       </li>
-      <!-- <li class="nav-item">
-        <a class="nav-link" href="pages/charts/chartjs.html">
-          <i class="mdi mdi-chart-pie menu-icon"></i>
-          <span class="menu-title">Charts</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-          <i class="mdi mdi-account menu-icon"></i>
-          <span class="menu-title">Daftar Pembeli</span>
-          <i class="menu-arrow"></i>
-        </a>
-      </li> -->
     </ul>
   </nav>
 
@@ -221,6 +208,43 @@
 	@yield('content')
         </div>
   </div>
+
+  <!-- Modal Review -->
+    <div class="modal fade" id="myReview" tabindex="-1" role="dialog" aria-labelledby="myReviewLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myReviewLabel">Change Status</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div id="message-review">
+                    </div>
+                    <form method="post" action="/change-status">
+                    {{ csrf_field() }}
+                        <input name="transaction_id" type="hidden" value="@foreach($transactions as $transaction) {{ $transaction->id }} @endforeach">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Change Transaction Status</label>
+                                    <select class="form-control" name="status" id="quality_review">
+                                        <option value="canceled">Canceled</option>
+                                        <option value="delivered">Delivered</option>
+                                        <option value="expired">Expired</option>
+                                        <option value="success">Success</option>
+                                        <option value="unverified">Unverified</option>
+                                        <option value="verified">Verified</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <input class="btn-sm btn-info" type="submit" value="Submit" class="btn_1" id="submit-review">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End modal review -->
 
   <!-- plugins:js -->
   <script src="{{ asset('assets/admin/vendors/base/vendor.bundle.base.js') }}"></script>
@@ -241,5 +265,8 @@
   <script src="{{ asset('assets/admin/js/jquery.dataTables.js') }}"></script>
   <script src="{{ asset('assets/admin/js/dataTables.bootstrap4.js') }}"></script>
   <!-- End custom js for this page-->
+
+  <!--Review modal validation -->
+    <script src="{{ asset('good_assets/js/validate.js') }}"></script>
 </body>
 </html>

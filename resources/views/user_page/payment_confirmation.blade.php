@@ -186,21 +186,35 @@
 				<aside class="col-lg-4">
 					<div class="box_style_1">
 						<h3 class="inner">Upload Proof of Payment</h3>
+						@if($transaction->proof_of_payment != NULL)
+							<p>
+								Your Proof of Payment :
+							</p>
+							<img src="/images/{{$transaction->proof_of_payment}}" style="width: 100%;">
+							<p>
+								Waiting for verification...
+							</p>
+						@else
 						<p>
 							Upload your proof of payment here before the order period is expired.
 							<br>
 							If you want to cancel the order, you can cancel it only if you have not yet upload the proof of payment.
 						</p>
+						@endif
 						<hr>
-						<form action="">
+						<form action="/product/proof-of-payment" method="POST" enctype="multipart/form-data">
+							{{ csrf_field() }}
+							<input type="hidden" name="id" value="{{ $transaction->id }}">
 							<input type="file" name="proof_of_payment">
 							<div class="row">
 								<div class="col-lg-12">
 									<button class="btn_1 green medium" value="submit" style="width: 100%; margin-top: 10px; margin-bottom: 10px;">upload</button>
 								</div>
+								@if($transaction->proof_of_payment == NULL)
 								<div class="col-lg-12">
-									<button class="btn_1 medium" value="submit" style="width: 100%; background-color: #ef4b4b;">cancel order</button>
+									<a class="btn_1 medium" href="/product/payment-confirmation/cancel/{{ $transaction->id }}" style="width: 100%; background-color: #ef4b4b; text-align: center; color: #fff;">cancel order</a>
 								</div>
+								@endif
 							</div>							
 						</form>						
 					</div>
@@ -214,7 +228,7 @@
 	<!-- End main -->
 	<script type="text/javascript">
 		// Set the date we're counting down to
-		var countDownDate = new Date("2020-05-30 22:02:47").getTime();
+		var countDownDate = new Date("{{ $transaction->timeout }}").getTime();
 
 		// Update the count down every 1 second
 		var x = setInterval(function() {

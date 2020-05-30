@@ -1,4 +1,4 @@
-@extends('home_parts.home_app')
+@extends('home_parts.home_khusus_detail')
 
 @section('content')
 
@@ -69,43 +69,44 @@
 						</div>
 						<div class="col-lg-9">
 							<!-- End general_rating -->
-							<div class="review_strip_single">
-								<img src="img/avatar1.jpg" alt="Image" class="rounded-circle">
-								<small> - 10 March 2015 -</small>
-								<h4>Jhon Doe</h4>
-								<p>
-									"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus."
-								</p>
-								<div class="rating">
-									<i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><i class="icon-smile"></i>
-								</div>
-							</div>
-							<!-- End review strip -->
+							@foreach($product_review as $review)
+								<div class="review_strip_single">
+									<img src="/images/{{ $review->user->profile_image }}" alt="Image" class="rounded-circle" width="80" height="80">
+									<small> - {{ $review->created_at }} -</small>
+									<h4>{{ $review->user->name }}</h4>
+									<p>
+										"{{ $review->content }}"
+									</p>
+									<div class="rating">
+										@for ($i = 0; $i < 5; $i++)
+											@if($i < $review->rate)
+										    	<i class="icon-smile voted"></i>
+										    @else
+										    	<i class="icon-smile"></i>
+										    @endif
+										@endfor
+											<!-- <i class="icon-smile voted"></i>
+											<i class="icon-smile voted"></i>
+											<i class="icon-smile voted"></i>
+											<i class="icon-smile"></i>
+											<i class="icon-smile"></i> -->
+									</div>
 
-							<div class="review_strip_single">
-								<img src="img/avatar2.jpg" alt="Image" class="rounded-circle">
-								<small> - 10 March 2015 -</small>
-								<h4>Jhon Doe</h4>
-								<p>
-									"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus."
-								</p>
-								<div class="rating">
-									<i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><i class="icon-smile"></i>
-								</div>
-							</div>
-							<!-- End review strip -->
+									@foreach($response as $row_resp)
+										@if($row_resp->review_id == $review->id)
+											<div class="review_strip_single" style="margin-left: 50px;">
+												<img src="/images/{{ $row_resp->admin->profile_image }}" alt="Image" class="rounded-circle" width="80" height="80">
+												<small> - {{ $row_resp->created_at }} -</small>
+												<h4>{{ $row_resp->admin->name }}</h4>
+												<p>
+													"{{ $row_resp->content }}"
+												</p>
+											</div>											
+										@endif										
+									@endforeach
 
-							<div class="review_strip_single last">
-								<img src="img/avatar3.jpg" alt="Image" class="rounded-circle">
-								<small> - 10 March 2015 -</small>
-								<h4>Jhon Doe</h4>
-								<p>
-									"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus."
-								</p>
-								<div class="rating">
-									<i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><i class="icon-smile"></i>
 								</div>
-							</div>
+							@endforeach
 							<!-- End review strip -->
 						</div>
 					</div>
@@ -132,7 +133,7 @@
 								Buy Now
 							</button> -->
 							<a class="btn_full" onclick="makeLink()" style="color: #fff">Buy Now</a>
-							<a class="btn_full_outline" href="#"><i class=" icon-cart"></i> Add to Cart</a>
+							<a class="btn_full_outline" onclick="makeCartLink()"><i class=" icon-cart"></i> Add to Cart</a>
 						</div>
 					</form>
 					<!--/box_style_1 -->
@@ -147,10 +148,15 @@
     
 	</main>
 	<!-- End main -->
+
 	<script type="text/javascript">
 	    function makeLink(){
 	        var qtyValue = document.getElementById("quantity").value;
 	        window.location.href = "/product/payment/{{ $product->id }}/"+qtyValue;
+	    }
+	    function makeCartLink(){
+	        var qtyValue = document.getElementById("quantity").value;
+	        window.location.href = "/cart/{{ $product->id }}/"+qtyValue+"/{{ Auth::user()->id }}";
 	    }
 	</script>
 	@endforeach
