@@ -57,10 +57,32 @@
 						<p>
 							Upload proof of payment before timeout.
 						</p>
-					</div>					
-					<div class="step" style="font-size: 15px;">
-					This order will be expire in ...<div id="demo" style="font-size: 25px"></div>						
 					</div>
+					@if($transaction->status == "canceled")
+						<div class="step" style="font-size: 15px;">
+						This order has been
+							<h3>{{ $transaction->status }}</h3>						
+						</div>
+					@else
+						@if($transaction->proof_of_payment != NULL)
+							@if($transaction->status == "unverified")
+								<div class="step" style="font-size: 15px;">
+								<i class="icon-ok"></i> Your proof of payment uploaded
+									<h3>Waiting for admin verification ...</h3>						
+								</div>
+							@else
+								<div class="step" style="font-size: 15px;">
+								<i class="icon-ok"></i> Admin verification
+									<h3>{{ $transaction->status }}</h3>						
+								</div>
+							@endif
+						@else
+							<div class="step" style="font-size: 15px;">
+							This order will be expire in ...
+								<div id="demo" style="font-size: 25px"></div>						
+							</div>
+						@endif
+					@endif					
 					<!--End step -->
 
 					<div class="form_title">
@@ -205,17 +227,19 @@
 						<form action="/product/proof-of-payment" method="POST" enctype="multipart/form-data">
 							{{ csrf_field() }}
 							<input type="hidden" name="id" value="{{ $transaction->id }}">
-							<input type="file" name="proof_of_payment">
-							<div class="row">
-								<div class="col-lg-12">
-									<button class="btn_1 green medium" value="submit" style="width: 100%; margin-top: 10px; margin-bottom: 10px;">upload</button>
+							@if($transaction->status != "canceled")
+								<input type="file" name="proof_of_payment">
+								<div class="row">
+									<div class="col-lg-12">
+										<button class="btn_1 green medium" value="submit" style="width: 100%; margin-top: 10px; margin-bottom: 10px;">upload</button>
+									</div>
+									@if($transaction->proof_of_payment == NULL)
+									<div class="col-lg-12">
+										<a class="btn_1 medium" href="/product/payment-confirmation/cancel/{{ $transaction->id }}" style="width: 100%; background-color: #ef4b4b; text-align: center; color: #fff;">cancel order</a>
+									</div>
+									@endif
 								</div>
-								@if($transaction->proof_of_payment == NULL)
-								<div class="col-lg-12">
-									<a class="btn_1 medium" href="/product/payment-confirmation/cancel/{{ $transaction->id }}" style="width: 100%; background-color: #ef4b4b; text-align: center; color: #fff;">cancel order</a>
-								</div>
-								@endif
-							</div>							
+							@endif							
 						</form>						
 					</div>
 				</aside>

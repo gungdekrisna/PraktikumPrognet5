@@ -5,11 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Courier;
+use App\Admin;
+use App\User;
 use App\Transaction;
 use App\Transaction_detail;
 use App\Cart;
+use App\User_notification;
 use App\Response;
 use App\Product_review;
+use App\Notifications\NotifyAdminReview;
+use App\Notifications\NotifyAdminTransaction;
+use App\Notifications\NotifyAdminProof;
+use App\Notifications\NotifyUserStatus;
+use App\Notifications\NotifyUserDelivered;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Auth;
 
@@ -161,6 +169,13 @@ class HomeController extends Controller
         $t_detail->selling_price = $selling_price * $t_detail->qty;
         $t_detail->save();
 
+        $notrans = transaction::where('id',$transaction->id)->first();
+        $no=auth()->user()->id;
+        $admin = Admin::all();
+        $user = User::where('id',$no)->first();
+        foreach($admin as $ad)
+            $ad->notify(new NotifyAdminTransaction($user, $notrans->id));
+
         return redirect('/product/payment-confirmation/'.$transaction->id);
     }
 
@@ -186,6 +201,15 @@ class HomeController extends Controller
 
         $transaction->proof_of_payment = $name;
         $transaction->save();
+
+        $notrans = transaction::where('id',$transaction->id)->first();
+        $no=auth()->user()->id;
+        $admin = Admin::all();
+        $user = User::where('id',$no)->first();
+        
+        foreach($admin as $ad)
+            $ad->notify(new NotifyAdminProof($user, $notrans->id));
+
         return redirect('/product/payment-confirmation/'.$transaction->id);
     }
 
@@ -446,12 +470,56 @@ class HomeController extends Controller
     public function insertReview(Request $request){
         $product_review = new Product_review();
 
+        $product_review->id = $request->id;
         $product_review->product_id = $request->product_id;
         $product_review->user_id = $request->user_id;
         $product_review->rate = $request->rate;
         $product_review->content = $request->content;
         $product_review->save();
 
+        $noprod = product::where('id',$request->product_id)->first();
+        $no=auth()->user()->id;
+        $admin = Admin::all();
+        $user = User::where('id',$no)->first();
+        foreach($admin as $ad)
+            $ad->notify(new NotifyAdminReview($user, $product_review->id));
+
         return redirect('/product/'.$request->product_id);
+    }
+
+    //Notification
+    public function ShowNotification(){
+        return view('user_page.notification');
+    }
+
+    public function MarkNotification($id){
+        auth()->user()->unReadNotifications->where('id', $id)->markAsRead();
+        return redirect('/notif');
+    }
+
+    public function MarkAll(){
+        $user = User::find(Auth::user()->id);
+        dd($user);
+        foreach ($user->unReadNotifications as $notification){
+            $notification->markAsRead();
+        }
+        return redirect('/notif');
+    }
+
+    public function NotifyIndex($id, $id2){
+        $transaksi = transaction::with(['user','transaction_detail' => function($q){
+            $q->with(['product' => function($qq){
+                $qq->with('product_image');
+            }]);
+        }, 'courier'])->find($id);
+
+        $review = product_review::where('user_id', '=', $transaksi->user_id)->get();
+
+        if($transaksi->user_id != Auth::user()->id || is_null(Auth::user())){
+            return abort(404);
+        }else{
+            auth()->user()->unReadNotifications->where('id', $id2)->markAsRead();
+            return view('user.detail_transaksi',['transaksi' => $transaksi, 'review' => $review]);
+        }
     }
 }

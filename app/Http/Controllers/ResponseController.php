@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Product_Review;
 use App\Response;
+use App\User;
+use App\Notifications\NotifyUserRespon;
 use Illuminate\Http\Request;
 use Redirect;
 use Illuminate\Support\Facades\DB;
@@ -45,6 +47,10 @@ class ResponseController extends Controller
         $response->admin_id = $request->admin_id;
         $response->content = $request->content;
         $response->save();
+
+        $review = Product_Review::where('id', $request->review_id)->first();
+        $user = User::where('id', $review->user_id)->first();
+        $user->notify(new NotifyUserRespon($review->product_id));
 
         return redirect('/response');
     }

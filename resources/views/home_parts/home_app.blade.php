@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>E-Commerce</title>
 
     <!-- ecommerce home user -->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -27,7 +27,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
-                    {{ config('app.name', 'Ecommerce') }}
+                    E-Commerce
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -62,6 +62,33 @@
                                 <a class="nav-link" href="/myorder/{{ Auth::user()->id }}">MyOrder</a>
                             </li>
                             <li class="nav-item dropdown">
+                              <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown"><span style="color: white;padding: 5px;border-radius: 6px;background-color: #e04f67;">{{Auth::user()->unReadNotifications->count()}}</span> Notification
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+                                <span class="dropdown-item"><a href="/notif" style="font-size: 13px;">Show All Notifications</a></span>
+                                <div class="dropdown-divider"></div>
+                                    @foreach (auth()->user()->unReadNotifications as $notification)
+                                      <div class="preview-thumbnail">
+                                        <div class="preview-icon bg-warning">
+                                          <i class="mdi mdi-settings"></i>
+                                        </div>
+                                      </div>
+                                    @if ($notification->type != "App\Notifications\NotifyUserRespon")
+                                      <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                                          <a class="text-decoration-none text-black" href="/product/payment-confirmation/{{$notification->data['notrans']}}"><h6  class="preview-subject font-weight-normal mb-1" style="font-size: 13px;padding: 0 10px 0 10px;"> {{$notification->data['content']}} {{$notification->data['notrans']}} {{$notification->data['status']}}</h6></a>
+                                      </div>
+                                      <div class="dropdown-divider"></div>
+                                    @else 
+                                    <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                                          <a class="text-decoration-none text-black" href="/product/{{$notification->data['noprod']}}"><h6  class="preview-subject font-weight-normal mb-1" style="font-size: 13px;padding: 0 10px 0 10px;"> {{$notification->data['content']}} {{$notification->data['status']}}</h6></a>
+                                      </div>
+                                      <div class="dropdown-divider"></div>
+                                      @endif
+                                    @endforeach
+                              </div>
+                            </li>
+
+                            <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
@@ -69,7 +96,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                     document.getElementById('logout-form').submit();" style="font-size: 13px;">
                                         {{ __('Logout') }}
                                     </a>
 

@@ -21,8 +21,8 @@
 <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex justify-content-center">
     <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">  
-      <a class="navbar-brand brand-logo" href="index.html"><img src="images/logo.svg" alt="logo"/></a>
-      <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a>
+      <a class="navbar-brand brand-logo" href="index.html">E-Commerce</a>
+      <a class="navbar-brand brand-logo-mini" href="index.html">EC</a>
       <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
         <span class="mdi mdi-sort-variant"></span>
       </button>
@@ -42,97 +42,63 @@
       </li>
     </ul>
     <ul class="navbar-nav navbar-nav-right">
-      <li class="nav-item dropdown mr-1">
-        <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">
-          <i class="mdi mdi-message-text mx-0"></i>
-          <span class="count"></span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="messageDropdown">
-          <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
-          <a class="dropdown-item">
-            <div class="item-thumbnail">
-                <img src="images/faces/face4.jpg" alt="image" class="profile-pic">
-            </div>
-            <div class="item-content flex-grow">
-              <h6 class="ellipsis font-weight-normal">John Doe
-              </h6>
-              <p class="font-weight-light small-text text-muted mb-0">
-                The meeting is cancelled
-              </p>
-            </div>
-          </a>
-          <a class="dropdown-item">
-            <div class="item-thumbnail">
-                <img src="images/faces/face2.jpg" alt="image" class="profile-pic">
-            </div>
-            <div class="item-content flex-grow">
-              <h6 class="ellipsis font-weight-normal">John Doe
-              </h6>
-              <p class="font-weight-light small-text text-muted mb-0">
-                New product launch
-              </p>
-            </div>
-          </a>
-          <a class="dropdown-item">
-            <div class="item-thumbnail">
-                <img src="images/faces/face3.jpg" alt="image" class="profile-pic">
-            </div>
-            <div class="item-content flex-grow">
-              <h6 class="ellipsis font-weight-normal"> John Doe
-              </h6>
-              <p class="font-weight-light small-text text-muted mb-0">
-                Upcoming board meeting
-              </p>
-            </div>
-          </a>
-        </div>
-      </li>
       <li class="nav-item dropdown mr-4">
         <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center notification-dropdown" id="notificationDropdown" href="#" data-toggle="dropdown">
           <i class="mdi mdi-bell mx-0"></i>
-          <span class="count"></span>
+          @if (Auth::user()->unReadNotifications->count() != 0)
+            <span class="count"></span>
+          @endif
         </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="notificationDropdown">
           <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
-          <a class="dropdown-item">
+
+          <a class="dropdown-item" href="/admin/notif">
             <div class="item-thumbnail">
               <div class="item-icon bg-success">
                 <i class="mdi mdi-information mx-0"></i>
               </div>
             </div>
             <div class="item-content">
-              <h6 class="font-weight-normal">Application Error</h6>
-              <p class="font-weight-light small-text mb-0 text-muted">
-                Just now
-              </p>
+              <h6 class="font-weight-normal">Show All Notifications</h6>
             </div>
           </a>
-          <a class="dropdown-item">
+
+          @foreach (Auth::guard('admin')->user()->unReadNotifications as $notification)
+            @if ($notification->type != "App\Notifications\NotifyAdminReview")
+
+          <a class="dropdown-item" href="/transactions-show/{{$notification->data['notrans']}}">
             <div class="item-thumbnail">
               <div class="item-icon bg-warning">
                 <i class="mdi mdi-settings mx-0"></i>
               </div>
             </div>
             <div class="item-content">
-              <h6 class="font-weight-normal">Settings</h6>
+              <h6 class="font-weight-normal">{{$notification->data['content']}}</h6>
               <p class="font-weight-light small-text mb-0 text-muted">
-                Private message
+                {{$notification->data['name']}}
               </p>
             </div>
           </a>
-          <a class="dropdown-item">
+
+          @else
+
+          <a class="dropdown-item" href="/response-show/{{$notification->data['noprod']}}">
             <div class="item-thumbnail">
               <div class="item-icon bg-info">
                 <i class="mdi mdi-account-box mx-0"></i>
               </div>
             </div>
             <div class="item-content">
-              <h6 class="font-weight-normal">New user registration</h6>
+              <h6 class="font-weight-normal">{{$notification->data['content']}}</h6>
               <p class="font-weight-light small-text mb-0 text-muted">
-                2 days ago
+                {{$notification->data['name']}}
               </p>
             </div>
           </a>
+
+            @endif
+          @endforeach
+
         </div>
       </li>
       <li class="nav-item nav-profile dropdown">

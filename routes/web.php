@@ -99,3 +99,22 @@ Route::post('/cart/transaction/store', 'HomeController@CartTransactionStore');
 
 // Review
 Route::post('/review-insert', 'HomeController@insertReview');
+
+//Notification
+Route::get('/admin/notif', 'AdminController@ShowAdminNotification');
+Route::get('/admin/mark/{id}', 'AdminController@MarkAdminNotification');
+Route::get('/admin/read/{id}', 'NotifyController@baca');
+
+Route::get('/admin/produk/show/{id}/{idnot}', 'Admin\ProdukController@NotifyShow');
+Route::get('/admin/transaksi/detail/{id}/{idnot}', 'TransactionDetailController@adminNotifyIndex');
+Route::get('/produk/{id}', 'HomeController@show')->middleware('verified');
+Route::get('/produk/{id}/{id2}', 'HomeController@NotifyShow')->middleware('verified');
+
+Route::get('/notif', 'HomeController@ShowNotification');
+Route::get('/mark/{id}', 'HomeController@MarkNotification');
+Route::get('/baca', 'NotifyUser@Read');
+Route::get('/transaksi/detail/{id}/{id2}', 'TransactionDetailController@NotifyIndex');
+
+// Chart AJAX
+Route::get('admin/chart','AdminController@chart');
+Route::get('admin/chartYear','AdminController@chartperYear');

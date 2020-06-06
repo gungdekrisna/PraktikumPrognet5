@@ -35,172 +35,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body dashboard-tabs p-0">
-                  <ul class="nav nav-tabs px-4" role="tablist">
-                    <li class="nav-item">
-                      <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Overview</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" id="sales-tab" data-toggle="tab" href="#sales" role="tab" aria-controls="sales" aria-selected="false">Sales</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" id="purchases-tab" data-toggle="tab" href="#purchases" role="tab" aria-controls="purchases" aria-selected="false">Purchases</a>
-                    </li>
-                  </ul>
-                  <div class="tab-content py-0 px-0">
-                    <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
-                      <div class="d-flex flex-wrap justify-content-xl-between">
-                        <div class="d-none d-xl-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
-                          <i class="mdi mdi-calendar-heart icon-lg mr-3 text-primary"></i>
-                          <div class="d-flex flex-column justify-content-around">
-                            <small class="mb-1 text-muted">Start date</small>
-                            <div class="dropdown">
-                              <a class="btn btn-secondary dropdown-toggle p-0 bg-transparent border-0 text-dark shadow-none font-weight-medium" href="#" role="button" id="dropdownMenuLinkA" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <h5 class="mb-0 d-inline-block">26 Jul 2018</h5>
-                              </a>
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLinkA">
-                                <a class="dropdown-item" href="#">12 Aug 2018</a>
-                                <a class="dropdown-item" href="#">22 Sep 2018</a>
-                                <a class="dropdown-item" href="#">21 Oct 2018</a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
-                          <i class="mdi mdi-currency-usd mr-3 icon-lg text-danger"></i>
-                          <div class="d-flex flex-column justify-content-around">
-                            <small class="mb-1 text-muted">Revenue</small>
-                            <h5 class="mr-2 mb-0">$577545</h5>
-                          </div>
-                        </div>
-                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
-                          <i class="mdi mdi-eye mr-3 icon-lg text-success"></i>
-                          <div class="d-flex flex-column justify-content-around">
-                            <small class="mb-1 text-muted">Total views</small>
-                            <h5 class="mr-2 mb-0">9833550</h5>
-                          </div>
-                        </div>
-                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
-                          <i class="mdi mdi-download mr-3 icon-lg text-warning"></i>
-                          <div class="d-flex flex-column justify-content-around">
-                            <small class="mb-1 text-muted">Downloads</small>
-                            <h5 class="mr-2 mb-0">2233783</h5>
-                          </div>
-                        </div>
-                        <div class="d-flex py-3 border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
-                          <i class="mdi mdi-flag mr-3 icon-lg text-danger"></i>
-                          <div class="d-flex flex-column justify-content-around">
-                            <small class="mb-1 text-muted">Flagged</small>
-                            <h5 class="mr-2 mb-0">3497843</h5>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="tab-pane fade" id="sales" role="tabpanel" aria-labelledby="sales-tab">
-                      <div class="d-flex flex-wrap justify-content-xl-between">
-                        <div class="d-none d-xl-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
-                          <i class="mdi mdi-calendar-heart icon-lg mr-3 text-primary"></i>
-                          <div class="d-flex flex-column justify-content-around">
-                            <small class="mb-1 text-muted">Start date</small>
-                            <div class="dropdown">
-                              <a class="btn btn-secondary dropdown-toggle p-0 bg-transparent border-0 text-dark shadow-none font-weight-medium" href="#" role="button" id="dropdownMenuLinkA" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <h5 class="mb-0 d-inline-block">26 Jul 2018</h5>
-                              </a>
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLinkA">
-                                <a class="dropdown-item" href="#">12 Aug 2018</a>
-                                <a class="dropdown-item" href="#">22 Sep 2018</a>
-                                <a class="dropdown-item" href="#">21 Oct 2018</a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
-                          <i class="mdi mdi-download mr-3 icon-lg text-warning"></i>
-                          <div class="d-flex flex-column justify-content-around">
-                            <small class="mb-1 text-muted">Downloads</small>
-                            <h5 class="mr-2 mb-0">2233783</h5>
-                          </div>
-                        </div>
-                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
-                          <i class="mdi mdi-eye mr-3 icon-lg text-success"></i>
-                          <div class="d-flex flex-column justify-content-around">
-                            <small class="mb-1 text-muted">Total views</small>
-                            <h5 class="mr-2 mb-0">9833550</h5>
-                          </div>
-                        </div>
-                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
-                          <i class="mdi mdi-currency-usd mr-3 icon-lg text-danger"></i>
-                          <div class="d-flex flex-column justify-content-around">
-                            <small class="mb-1 text-muted">Revenue</small>
-                            <h5 class="mr-2 mb-0">$577545</h5>
-                          </div>
-                        </div>
-                        <div class="d-flex py-3 border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
-                          <i class="mdi mdi-flag mr-3 icon-lg text-danger"></i>
-                          <div class="d-flex flex-column justify-content-around">
-                            <small class="mb-1 text-muted">Flagged</small>
-                            <h5 class="mr-2 mb-0">3497843</h5>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="tab-pane fade" id="purchases" role="tabpanel" aria-labelledby="purchases-tab">
-                      <div class="d-flex flex-wrap justify-content-xl-between">
-                        <div class="d-none d-xl-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
-                          <i class="mdi mdi-calendar-heart icon-lg mr-3 text-primary"></i>
-                          <div class="d-flex flex-column justify-content-around">
-                            <small class="mb-1 text-muted">Start date</small>
-                            <div class="dropdown">
-                              <a class="btn btn-secondary dropdown-toggle p-0 bg-transparent border-0 text-dark shadow-none font-weight-medium" href="#" role="button" id="dropdownMenuLinkA" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <h5 class="mb-0 d-inline-block">26 Jul 2018</h5>
-                              </a>
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLinkA">
-                                <a class="dropdown-item" href="#">12 Aug 2018</a>
-                                <a class="dropdown-item" href="#">22 Sep 2018</a>
-                                <a class="dropdown-item" href="#">21 Oct 2018</a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
-                          <i class="mdi mdi-currency-usd mr-3 icon-lg text-danger"></i>
-                          <div class="d-flex flex-column justify-content-around">
-                            <small class="mb-1 text-muted">Revenue</small>
-                            <h5 class="mr-2 mb-0">$577545</h5>
-                          </div>
-                        </div>
-                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
-                          <i class="mdi mdi-eye mr-3 icon-lg text-success"></i>
-                          <div class="d-flex flex-column justify-content-around">
-                            <small class="mb-1 text-muted">Total views</small>
-                            <h5 class="mr-2 mb-0">9833550</h5>
-                          </div>
-                        </div>
-                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
-                          <i class="mdi mdi-download mr-3 icon-lg text-warning"></i>
-                          <div class="d-flex flex-column justify-content-around">
-                            <small class="mb-1 text-muted">Downloads</small>
-                            <h5 class="mr-2 mb-0">2233783</h5>
-                          </div>
-                        </div>
-                        <div class="d-flex py-3 border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
-                          <i class="mdi mdi-flag mr-3 icon-lg text-danger"></i>
-                          <div class="d-flex flex-column justify-content-around">
-                            <small class="mb-1 text-muted">Flagged</small>
-                            <h5 class="mr-2 mb-0">3497843</h5>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-7 grid-margin stretch-card">
+            <!-- <div class="col-md-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                   <p class="card-title">Cash deposits</p>
@@ -209,102 +44,146 @@
                   <canvas id="cash-deposits-chart"></canvas>
                 </div>
               </div>
-            </div>
-            <div class="col-md-5 grid-margin stretch-card">
+            </div> -->
+
+            <div class="col-md-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <p class="card-title">Total sales</p>
-                  <h1>$ 28835</h1>
-                  <h4>Gross sales over the years</h4>
-                  <p class="text-muted">Today, many people rely on computers to do homework, work, and create or store useful information. Therefore, it is important </p>
+                  <p class="card-title">Pendapatan Per Bulan</p>
+                  <!-- <h1>$ 28835</h1>
+                  <h4>Gross sales over the years</h4> -->
+                  <p class="text-muted">Grafik pendapatan tiap bulan</p>
                   <div id="total-sales-chart-legend"></div>                  
                 </div>
-                <canvas id="total-sales-chart"></canvas>
+                <canvas id="chartMonth"></canvas>
               </div>
             </div>
+
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <p class="card-title">Pendapatan Per Tahun</p>
+                  <p class="text-muted">Grafik pendapatan tiap tahun</p>
+                  <div id="total-sales-chart-legend"></div>                  
+                </div>
+                <!-- <canvas id="total-sales-chart"></canvas> -->
+                <canvas id="chartYear"></canvas>
+              </div>
+            </div>
+
           </div>
+
+          <div class="row">
+
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <p class="card-title">Jumlah Transaksi Per Bulan</p>
+                  <!-- <h1>$ 28835</h1>
+                  <h4>Gross sales over the years</h4> -->
+                  <p class="text-muted">Grafik jumlah transaksi tiap bulan</p>
+                  <div id="total-sales-chart-legend"></div>                  
+                </div>
+                <canvas id="chartMonthJumlah"></canvas>
+              </div>
+            </div>
+
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <p class="card-title">Jumlah Transaksi Per Tahun</p>
+                  <p class="text-muted">Grafik jumlah transaksi tiap tahun</p>
+                  <div id="total-sales-chart-legend"></div>                  
+                </div>
+                <!-- <canvas id="total-sales-chart"></canvas> -->
+                <canvas id="chartYearJumlah"></canvas>
+              </div>
+            </div>
+
+          </div>
+
           <div class="row">
             <div class="col-md-12 stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <p class="card-title">Recent Purchases</p>
+                  <p class="card-title">Jumlah Transaksi dan Pendapatan Tiap Bulan</p>
                   <div class="table-responsive">
                     <table id="recent-purchases-listing" class="table">
                       <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Status report</th>
-                            <th>Office</th>
-                            <th>Price</th>
-                            <th>Date</th>
-                            <th>Gross amount</th>
+                            <th>Bulan</th>
+                            <th>Jumlah</th>
+                            <th>Pendapatan</th>
                         </tr>
                       </thead>
                       <tbody>
+                        @foreach($transactions_per_month as $transaction_month)
                         <tr>
-                            <td>John Doe</td>
-                            <td>Levelled up</td>
-                            <td>Catalinaborough</td>
-                            <td>$790</td>
-                            <td>06 Jan 2018</td>
-                            <td>$2274253</td>
+                            <td>
+                              @if($transaction_month->bulan == 1)
+                                Januari
+                              @elseif($transaction_month->bulan == 2)
+                                Februari
+                              @elseif($transaction_month->bulan == 3)
+                                Maret
+                              @elseif($transaction_month->bulan == 4)
+                                April
+                              @elseif($transaction_month->bulan == 5)
+                                Mei
+                              @elseif($transaction_month->bulan == 6)
+                                Juni
+                              @elseif($transaction_month->bulan == 7)
+                                Juli
+                              @elseif($transaction_month->bulan == 8)
+                                Agustus
+                              @elseif($transaction_month->bulan == 9)
+                                September
+                              @elseif($transaction_month->bulan == 10)
+                                Oktober
+                              @elseif($transaction_month->bulan == 11)
+                                November
+                              @elseif($transaction_month->bulan == 12)
+                                Desember
+                              @else
+                                Undefined
+                              @endif
+                            </td>
+                            <td>{{ $transaction_month->jumlah }}</td>
+                            <td>Rp. {{ $transaction_month->pendapatan }}</td>
                         </tr>
+                        @endforeach
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="margin-top: 30px;">
+            <div class="col-md-12 stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <p class="card-title">Jumlah Transaksi dan Pendapatan Tiap Tahun</p>
+                  <div class="table-responsive">
+                    <table id="recent-purchases-listing" class="table">
+                      <thead>
                         <tr>
-                            <td>John Doe</td>
-                            <td>Ui design completed</td>
-                            <td>East Mayra</td>
-                            <td>$23230</td>
-                            <td>18 Jul 2018</td>
-                            <td>$83127</td>
+                            <th>Tahun</th>
+                            <th>Jumlah</th>
+                            <th>Pendapatan</th>
                         </tr>
+                      </thead>
+                      <tbody>
+
+                        @foreach($transactions_per_year as $transaction_year)
                         <tr>
-                            <td> John Doe</td>
-                            <td>support</td>
-                            <td>Makennaton</td>
-                            <td>$939</td>
-                            <td>16 Jul 2018</td>
-                            <td>$29177</td>
+                            <td>{{ $transaction_year->tahun }}</td>
+                            <td>{{ $transaction_year->jumlah }}</td>
+                            <td>Rp. {{ $transaction_year->pendapatan }}</td>
                         </tr>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>support</td>
-                            <td>Agustinaborough</td>
-                            <td>$30</td>
-                            <td>30 Apr 2018</td>
-                            <td>$44617</td>
-                        </tr>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>Ui design not completed</td>
-                            <td>Lake Sandrafort</td>
-                            <td>$571</td>
-                            <td>25 Jun 2018</td>
-                            <td>$78952</td>
-                        </tr>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>Ui design completed</td>
-                            <td>Cassinbury</td>
-                            <td>$36</td>
-                            <td>05 Nov 2018</td>
-                            <td>$36422</td>
-                        </tr>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>New project</td>
-                            <td>Cletaborough</td>
-                            <td>$314</td>
-                            <td>12 Jul 2018</td>
-                            <td>$34167</td>
-                        </tr>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>Levelled up</td>
-                            <td>West Fidelmouth</td>
-                            <td>$484</td>
-                            <td>08 Sep 2018</td>
-                            <td>$50862</td>
-                        </tr>
+                        @endforeach
+                        
                       </tbody>
                     </table>
                   </div>
@@ -317,8 +196,8 @@
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2020<a href="#" target="_blank">PineapplePremium</a>. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2020 Kelompok 5 Praktikum Prognet. Powered By<a href="#" target="_blank"> PineapplePremium</a>. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i> by Kelompok 5 Praktikum Prognet</span>
           </div>
         </footer>
         <!-- partial -->
@@ -327,4 +206,247 @@
     </div>
     <!-- page-body-wrapper ends -->
   <!-- </div> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/js/bootstrap-select.min.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js" charset="utf-8"></script>
+  <script>
+  var url = "{{url('admin/chart')}}";
+  var Jumlah = new Array();
+  var Bulan = new Array();
+  var Pendapatan = new Array();
+  $(document).ready(function(){
+    $.get(url, function(response){
+      response.forEach(function(data){
+          Jumlah.push(data.jumlah);
+          Bulan.push(data.bulan);
+          Pendapatan.push(data.pendapatan);
+      });
+      var ctx = document.getElementById("chartMonth").getContext('2d');
+          var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels:Bulan,
+                datasets: [{
+                    label: 'Pendapatan per Bulan',
+                    data: Pendapatan,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+    });
+  });
+  </script>
+
+  <script>
+  var urlYear = "{{url('admin/chartYear')}}";
+  var JumlahYear = new Array();
+  var Tahun = new Array();
+  var PendapatanYear = new Array();
+  $(document).ready(function(){
+    $.get(urlYear, function(response){
+      response.forEach(function(data){
+          JumlahYear.push(data.jumlahYear);
+          Tahun.push(data.tahun);
+          PendapatanYear.push(data.pendapatanYear);
+      });
+      var ctx = document.getElementById("chartYear").getContext('2d');
+          var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels:Tahun,
+                datasets: [{
+                    label: 'Pendapatan per Tahun',
+                    data: PendapatanYear,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+    });
+  });
+  </script>
+
+  <script>
+  var urlJumlah = "{{url('admin/chart')}}";
+  var JumlahJumlah = new Array();
+  var BulanJumlah = new Array();
+  var PendapatanJumlah = new Array();
+  $(document).ready(function(){
+    $.get(urlJumlah, function(response){
+      response.forEach(function(data){
+          JumlahJumlah.push(data.jumlah);
+          BulanJumlah.push(data.bulan);
+          PendapatanJumlah.push(data.pendapatan);
+      });
+      var ctx = document.getElementById("chartMonthJumlah").getContext('2d');
+          var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels:Bulan,
+                datasets: [{
+                    label: 'Jumlah transaksi per Bulan',
+                    data: JumlahJumlah,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+    });
+  });
+  </script>
+
+  <script>
+  var urlYearJumlah = "{{url('admin/chartYear')}}";
+  var JumlahYearJumlah = new Array();
+  var TahunJumlah = new Array();
+  var PendapatanYearJumlah = new Array();
+  $(document).ready(function(){
+    $.get(urlYearJumlah, function(response){
+      response.forEach(function(data){
+          JumlahYearJumlah.push(data.jumlahYear);
+          TahunJumlah.push(data.tahun);
+          PendapatanYearJumlah.push(data.pendapatanYear);
+      });
+      var ctx = document.getElementById("chartYearJumlah").getContext('2d');
+          var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels:Tahun,
+                datasets: [{
+                    label: 'Jumlah transaksi per Tahun',
+                    data: JumlahYearJumlah,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+    });
+  });
+  </script>
+  <!-- <script src="{{ asset('assets/admin/vendors/chart.js/Chart.min.js') }}"></script>
+  <script>
+    var url = "{{url('admin/chart')}}";
+    var Jumlah = new Array();
+    var Bulan = new Array();
+    var Pendapatan = new Array();
+    $.get(url, function(response){
+      response.forEach(function(data){
+          Jumlah.push(data.jumlah);
+          Bulan.push(data.bulan);
+          Pendapatan.push(data.pendapatan);
+      });
+    });
+
+    var ctx = document.getElementById("chartMonth").getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [{
+          label: '# of Votes',
+          data: [12, 19, 3, 23, 2, 3],
+          backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+          'rgba(255,99,132,1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero:true
+            }
+          }]
+        }
+      }
+    });
+  </script>
+
+  <script>
+    var ctx = document.getElementById("chartYear").getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [{
+          label: '# of Votes',
+          data: [12, 19, 3, 23, 2, 3],
+          backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+          'rgba(255,99,132,1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero:true
+            }
+          }]
+        }
+      }
+    });
+  </script> -->
 @endsection

@@ -49,7 +49,21 @@
                                 <div class="col-lg-6 col-md-9">
                                     <div class="tour_list_desc">
                                         <p>Transaction #{{ $transaction->id }}</p>
-                                        <h3><strong>Expired in <span style="color: #e74c3c">{{ $transaction->timeout }}</span></strong></h3>
+
+                                        @if($transaction->proof_of_payment == NULL)
+                                            @if($transaction->status == "unverified")
+                                                <h3><strong>Expired in <span style="color: #e74c3c">{{ $transaction->timeout }}</span></strong></h3>
+                                            @else
+                                                <h3><strong style="color: #e74c3c">{{ $transaction->status }}</strong></h3>
+                                            @endif
+                                        @else
+                                            @if($transaction->status == "unverified")
+                                                <h3><strong>Waiting admin verification ...</strong></h3>
+                                            @else
+                                                <h3><strong>{{ $transaction->status }}</strong></h3>
+                                            @endif                                            
+                                        @endif
+
                                         <p><strong style="color: #333">Courier : </strong><br>{{ $transaction->courier->courier }}</p>
                                         <p><strong style="color: #333">Shipping Address : </strong><br>{{ $transaction->address }}, {{ $transaction->regency }}, {{ $transaction->province }}</p>
                                     </div>
