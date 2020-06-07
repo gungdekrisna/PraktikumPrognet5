@@ -219,7 +219,33 @@
     $.get(url, function(response){
       response.forEach(function(data){
           Jumlah.push(data.jumlah);
-          Bulan.push(data.bulan);
+          if (data.bulan == 1) {
+            Bulan.push("Januari");
+          } else if(data.bulan == 2) {
+            Bulan.push("Februari");
+          } else if(data.bulan == 3) {
+            Bulan.push("Maret");
+          } else if(data.bulan == 4) {
+            Bulan.push("April");
+          } else if(data.bulan == 5) {
+            Bulan.push("Mei");
+          } else if(data.bulan == 6) {
+            Bulan.push("Juni");
+          } else if(data.bulan == 7) {
+            Bulan.push("Juli");
+          } else if(data.bulan == 8) {
+            Bulan.push("Agustus");
+          } else if(data.bulan == 9) {
+            Bulan.push("September");
+          } else if(data.bulan == 10) {
+            Bulan.push("Oktober");
+          } else if(data.bulan == 11) {
+            Bulan.push("November");
+          } else if(data.bulan == 12) {
+            Bulan.push("Desember");
+          } else {
+            Bulan.push("not 1 - 12");
+          }
           Pendapatan.push(data.pendapatan);
       });
       var ctx = document.getElementById("chartMonth").getContext('2d');
